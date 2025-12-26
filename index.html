@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <title>Super Clicker 3D</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="top-ui">
+        <div class="settings-wrapper">
+            <button id="btn-settings" class="ui-btn">⚙️</button>
+        </div>
+        <div class="shop-wrapper">
+            <button id="btn-shop" class="ui-btn">🛒</button>
+        </div>
+        <div class="empty-wrapper"></div> 
+    </div>
+
+    <div class="game-container">
+        <button id="main-button" class="click-btn default"></button>
+    </div>
+
+    <div class="score-container">
+        <div><span id="score">0</span> 💎</div>
+        <div id="auto-score-info" class="auto-stats hidden">🤖 Авто: +0</div>
+    </div>
+
+    <div id="modal-settings" class="modal hidden">
+        <div class="modal-content">
+            <h2>Налаштування</h2>
+            <div class="shop-grid">
+                <button id="toggle-music" class="ui-btn-long">Музика: УВІМК</button>
+                <button id="toggle-sound" class="ui-btn-long">Звук: УВІМК</button>
+            </div>
+            <hr style="border-color: #555; margin: 15px 0;">
+            <h3>🛠️ Розробник</h3>
+            <button class="dev-btn" onclick="devAddPoints()">+1000 Очок</button>
+            <button class="dev-btn dev-reset" onclick="devResetProgress()">⚠️ Скинути прогрес</button>
+            <button class="close-btn" onclick="toggleSettings()">Закрити</button>
+        </div>
+    </div>
+
+    <div id="modal-shop" class="modal hidden">
+        <div class="modal-content shop-content">
+            <h2>🛒 Магазин</h2>
+            <h3>Скіни</h3>
+            <div id="shop-skins" class="shop-grid"></div>
+            <h3>Авто-клікери</h3>
+            <div id="shop-clickers" class="shop-grid"></div>
+            <button class="close-btn" onclick="toggleShop()">Закрити</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

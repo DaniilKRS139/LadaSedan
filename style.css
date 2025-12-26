@@ -1,0 +1,99 @@
+body {
+    margin: 0; padding: 0;
+    background-color: #222; color: white;
+    font-family: sans-serif; overflow: hidden;
+    height: 100vh; display: flex; flex-direction: column;
+    user-select: none; -webkit-tap-highlight-color: transparent;
+}
+
+/* --- UI --- */
+.top-ui {
+    position: absolute; top: 15px; left: 0; width: 100%; padding: 0 20px;
+    box-sizing: border-box; display: flex; justify-content: space-between; align-items: center;
+    z-index: 10; pointer-events: none;
+}
+.settings-wrapper, .shop-wrapper, .empty-wrapper { flex: 1; pointer-events: auto; }
+.settings-wrapper { text-align: left; }
+.shop-wrapper { text-align: center; }
+.empty-wrapper { text-align: right; }
+
+.ui-btn {
+    background: #444; color: white; border: 2px solid #fff;
+    width: 50px; height: 50px; padding: 0; border-radius: 12px;
+    font-size: 24px; cursor: pointer; box-shadow: 0 4px 0 #222;
+    outline: none; display: inline-flex; justify-content: center; align-items: center;
+}
+.ui-btn:active { transform: translateY(4px); box-shadow: 0 0 0 #222; }
+
+/* БЛОК РАХУНКУ */
+.score-container {
+    position: absolute; bottom: 30px; width: 100%; text-align: center;
+    pointer-events: none;
+    display: flex; flex-direction: column; align-items: center;
+}
+
+/* Головні цифри */
+.score-container div:first-child {
+    font-size: 36px; font-weight: 800; 
+    text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+}
+
+/* Статистика автоклікера (НОВЕ) */
+.auto-stats {
+    font-size: 16px; color: #aaa; margin-top: 5px;
+    background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 10px;
+}
+
+.game-container { flex-grow: 1; display: flex; justify-content: center; align-items: center; }
+
+/* --- ГОЛОВНА КНОПКА --- */
+#main-button {
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    border: none; outline: none; cursor: pointer; position: relative;
+    transition: transform 0.08s, box-shadow 0.08s, filter 0.08s;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #444; 
+    background-position: center; background-size: cover; background-repeat: no-repeat;
+    box-shadow: 0 10px 0 rgba(0,0,0,0.5), 0 15px 20px rgba(0,0,0,0.4);
+}
+#main-button.pressed { transform: translateY(10px) scale(0.98); }
+
+/* Скіни */
+.skin-default { background-image: linear-gradient(to bottom, #ff5e5e, #d60000) !important; box-shadow: 0 10px 0 #8b0000, 0 15px 20px rgba(0,0,0,0.4) !important; }
+.skin-default.pressed { box-shadow: 0 0 0 #8b0000, 0 5px 10px rgba(0,0,0,0.4) !important; }
+
+/* Ефекти світіння */
+.skin-metal.pressed { box-shadow: 0 0 0 rgba(0,0,0,0.5), 0 5px 10px rgba(0,0,0,0.4) !important; filter: brightness(1.3); }
+.skin-magma.pressed { box-shadow: 0 0 0 rgba(0,0,0,0.5), 0 5px 10px rgba(0,0,0,0.4), 0 0 20px #ff4500, 0 0 40px #ff8c00 !important; filter: saturate(1.5) brightness(1.2); }
+.skin-neon.pressed { box-shadow: 0 0 0 rgba(0,0,0,0.5), 0 5px 10px rgba(0,0,0,0.4), 0 0 25px #0ff, 0 0 50px #00bcd4, inset 0 0 20px #0ff !important; filter: brightness(1.1); }
+
+/* --- ВИЛІТАЮЧІ ЦИФРИ --- */
+.floating-text {
+    position: absolute; color: white; font-size: 28px; font-weight: bold;
+    pointer-events: none; text-shadow: 0 0 5px black;
+    animation: floatUp 0.8s ease-out forwards; z-index: 100;
+}
+
+/* Окремий стиль для автоклікера (трохи менші і інший колір, наприклад жовтуватий) */
+.auto-floating-text {
+    position: absolute; color: #ffeb3b; /* Жовтий */
+    font-size: 24px; font-weight: bold; font-family: monospace;
+    pointer-events: none; text-shadow: 0 0 3px black;
+    animation: floatUp 1s ease-out forwards; z-index: 99;
+}
+
+@keyframes floatUp {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-80px) scale(1.2); }
+}
+
+/* --- MODAL --- */
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: flex; justify-content: center; align-items: center; z-index: 20; backdrop-filter: blur(5px); }
+.hidden { display: none; }
+.modal-content { background: #2b2b2b; padding: 25px; border-radius: 20px; text-align: center; width: 85%; max-height: 80vh; overflow-y: auto; border: 1px solid #444; }
+.shop-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 20px; }
+.shop-item { background: #3a3a3a; padding: 12px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; }
+.shop-item button { padding: 8px 15px; border-radius: 8px; border: none; font-weight: bold; color: white; }
+.dev-btn { display: block; width: 100%; margin-top: 10px; padding: 10px; background: #e91e63; color: white; border: none; border-radius: 8px; font-weight: bold; }
+.close-btn { margin-top: 15px; padding: 12px 30px; background: #444; color: white; border: none; border-radius: 10px; }
